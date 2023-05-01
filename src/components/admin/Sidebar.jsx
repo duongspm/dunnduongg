@@ -5,6 +5,7 @@ import avt from './assets/images/duongg.jpg';
 import search from './assets/images/search-normal.png';
 import album from './assets/images/album.png';
 import './assets/css.css';
+import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum } from "react-icons/bi";
 
 function Sidebar() {
     const [isExpended, setExpendState] = useState(false);
@@ -43,16 +44,67 @@ function Sidebar() {
                     <span></span><span></span><span></span>
                 </button>
 
-                <div className="nav__menu">
+                {/* <div className="nav__menu">
                     {
                         menuItems.map(({text,icon}) => (
                             <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                                 <img src={icon} alt="" />
+                                
                                 {isExpended && <p>{text}</p>}
                             {!isExpended && <div className="tooltip">{text}</div>}
                             </a>
                         ))
                     }
+                </div> */}
+                <div className="nav__menu">
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiImage/>
+                        </div>
+                        {isExpended && <p>Slide</p>}
+                    {!isExpended && <div className="tooltip">Slide</div>}
+                    </a>
+
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiUserMinus/>
+                        </div>
+                        {isExpended && <p>Women</p>}
+                    {!isExpended && <div className="tooltip">Women</div>}
+                    </a>
+
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiUserPlus/>
+                        </div>
+                        {isExpended && <p>Man</p>}
+                    {!isExpended && <div className="tooltip">Man</div>}
+                    </a>
+
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiUniversalAccess/>
+                        </div>
+                        {isExpended && <p>Man</p>}
+                    {!isExpended && <div className="tooltip">User</div>}
+                    </a>
+
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiCommentDots/>
+                        </div>
+                        {isExpended && <p>Feedback</p>}
+                    {!isExpended && <div className="tooltip">Feedback</div>}
+                    </a>
+
+                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiPhotoAlbum/>
+                        </div>
+                        {isExpended && <p>Album</p>}
+                    {!isExpended && <div className="tooltip">Album</div>}
+                    </a>
+                    
                 </div>
                 <div className="nav-footer">
                     {isExpended && (<div className="nav-details">
