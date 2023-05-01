@@ -211,6 +211,32 @@ body{
     background-color: var(--color--4);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.menu-search{
+    background: var(--color--1);
+    justify-content: center;
+}
+.menu-search input{
+    width: 65%;
+    height: 75%;
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+}
+.nav__search{
+    border: none;
+    background: none;
+    
+    cursor: pointer;
+    /* background: red; */
+    transition: 0.2s linear;
+}
+.nav__search svg{
+    padding: 0 !important;
+}
+.nav__search:hover{
+    color: white;
+}
+
 .nav__icon{
     display: flex;
     align-items: center;
@@ -281,7 +307,7 @@ body{
 }
 .logout-img img{
     width: auto;
-    height: 30px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;

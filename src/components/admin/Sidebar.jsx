@@ -5,7 +5,8 @@ import avt from './assets/images/duongg.jpg';
 import search from './assets/images/search-normal.png';
 import album from './assets/images/album.png';
 import './assets/css.css';
-import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum } from "react-icons/bi";
+import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum,BiSearchAlt } from "react-icons/bi";
+import {MenuItem, SubMenu, SidebarHeader, SidebarContent} from "react-pro-sidebar";
 
 function Sidebar() {
     const [isExpended, setExpendState] = useState(false);
@@ -57,6 +58,14 @@ function Sidebar() {
                     }
                 </div> */}
                 <div className="nav__menu">
+                    <div className={isExpended ?  "menu-search menu-item" : "menu-item menu-search menu-search-NX menu-item-NX"}>
+                            <button className="nav__search nav__icon">
+                                <BiSearchAlt/>
+                            </button>
+                            
+                            {isExpended && <input type="text" />}
+                        {!isExpended && <div className="tooltip">Search</div>}
+                    </div>
                     <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiImage/>
@@ -106,6 +115,7 @@ function Sidebar() {
                     </a>
                     
                 </div>
+
                 <div className="nav-footer">
                     {isExpended && (<div className="nav-details">
                         <img src="images/in-love.png" alt="" />

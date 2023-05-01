@@ -6,7 +6,7 @@ function indexAdmin(){
     return (
         <div>
             <div className="nav">
-                <Nav/>
+                {/* <Nav/> */}
             </div>
             <div className="_sidebar">
                 <Sidebar></Sidebar>
