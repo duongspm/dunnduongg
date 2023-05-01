@@ -61,7 +61,7 @@ function Sidebar() {
                             <span className="nav-footer-username">Duongg</span>
                             <span className="nav-footer-user-position">My Wedding</span>
                         </div>
-                    </div>)}
+                    </div>)} 
                     <div className='logout-img' >
                         <img src="images/exit.png" alt="" />
 
