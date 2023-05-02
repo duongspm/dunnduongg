@@ -1,19 +1,18 @@
 import React,{useState} from 'react';
 
-import {Link} from 'react-scroll';
+import {Link as Linkk} from 'react-scroll';
 import avt from './assets/images/duongg.jpg';
 import search from './assets/images/search-normal.png';
 import album from './assets/images/album.png';
 import './assets/css.css';
-import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum,BiSearchAlt } from "react-icons/bi";
-import {MenuItem, SubMenu, SidebarHeader, SidebarContent} from "react-pro-sidebar";
+import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum,BiSearchAlt,BiHomeHeart } from "react-icons/bi";
 
 function Sidebar() {
     const [isExpended, setExpendState] = useState(false);
     const menuItems = [
         {
             text:"Slide",
-            icon:"images/slides.png",
+            icon:"<BiHomeHeart/>",
         },
         {
             text:"Employees",
@@ -49,7 +48,7 @@ function Sidebar() {
                     {
                         menuItems.map(({text,icon}) => (
                             <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
-                                <img src={icon} alt="" />
+                                {icon}
                                 
                                 {isExpended && <p>{text}</p>}
                             {!isExpended && <div className="tooltip">{text}</div>}
@@ -66,13 +65,26 @@ function Sidebar() {
                             {isExpended && <input type="text" />}
                         {!isExpended && <div className="tooltip">Search</div>}
                     </div>
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk to='atm'
+                    activeClass="active"
+                    smooth={true}
+                    className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiHomeHeart/>
+                        </div>
+                        {isExpended && <p>Home</p>}
+                    {!isExpended && <div className="tooltip">Home</div>}
+                    </Linkk>
+                    <Linkk to='slide'
+                    activeClass="active"
+                    smooth={true}
+                    className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiImage/>
                         </div>
                         {isExpended && <p>Slide</p>}
                     {!isExpended && <div className="tooltip">Slide</div>}
-                    </a>
+                    </Linkk>
 
                     <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">

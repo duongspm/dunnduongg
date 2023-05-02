@@ -24,6 +24,7 @@ export const saveEmail = async(data) => {
 };
 
 
+
 //saving feedback
 export const saveFeedback = async(data) => {
     await setDoc(doc(firestore,"feedback", `${Date.now()}`), data,{
@@ -35,6 +36,22 @@ export const saveFeedback = async(data) => {
 export const getALlFeedBack = async () => {
     const items = await getDocs (
         query(collection(firestore, "feedback"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+
+
+//saving slide
+export const saveslide = async(data) => {
+    await setDoc(doc(firestore,"slide", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all slide
+export const getALlslide = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "slide"), orderBy("id","desc"))
     );
     return items.docs.map((doc) => doc.data());
 };

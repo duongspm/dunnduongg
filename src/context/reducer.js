@@ -4,6 +4,8 @@ export const actionType = {
     SET_CART_SHOW : "SET_CART_SHOW",
     SET_CARTITEMS : "SET_CARTITEMS",
     SET_FEED_BACK : "SET_FEED_BACK",
+    SET_SLIDE : "SET_SLIDE",
+
 };
 
 const reducer = (state, action) => {
@@ -34,6 +36,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 feedBack: action.feedBack,
+            }; 
+
+        case actionType.SET_SLIDE:
+            return {
+                ...state,
+                slide: action.slide,
             }; 
         default:
             return state;
