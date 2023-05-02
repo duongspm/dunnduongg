@@ -366,9 +366,7 @@ body{
     transition: 0.2s linear;
     cursor: pointer;
 }
-.table-items:nth-child(even){
-    /* background: var(--color--3); */
-}
+
 .table-items:hover{
     background: var(--color--3);
     border-radius: 20px;
