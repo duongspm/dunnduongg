@@ -5,7 +5,7 @@ import avt from './assets/images/duongg.jpg';
 import search from './assets/images/search-normal.png';
 import album from './assets/images/album.png';
 import './assets/css.css';
-import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum,BiSearchAlt,BiHomeHeart } from "react-icons/bi";
+import { BiImage,BiUserMinus,BiUserPlus,BiUniversalAccess,BiCommentDots,BiPhotoAlbum,BiSearchAlt,BiHomeHeart,BiCalendarHeart } from "react-icons/bi";
 
 function Sidebar() {
     const [isExpended, setExpendState] = useState(false);
@@ -75,6 +75,7 @@ function Sidebar() {
                         {isExpended && <p>Home</p>}
                     {!isExpended && <div className="tooltip">Home</div>}
                     </Linkk>
+                    
                     <Linkk to='slide'
                     activeClass="active"
                     smooth={true}
@@ -84,6 +85,17 @@ function Sidebar() {
                         </div>
                         {isExpended && <p>Slide</p>}
                     {!isExpended && <div className="tooltip">Slide</div>}
+                    </Linkk>
+
+                    <Linkk to='event'
+                    activeClass="active"
+                    smooth={true}
+                    className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                        <div className="nav__icon">
+                            <BiCalendarHeart/>
+                        </div>
+                        {isExpended && <p>Event</p>}
+                    {!isExpended && <div className="tooltip">Event</div>}
                     </Linkk>
 
                     <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>

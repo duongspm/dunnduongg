@@ -5,6 +5,7 @@ import Atm from './ATM/Atm';
 import Slide from './Photo/Slide';
 import {Route, Routes, Link} from 'react-router-dom';
 import './assets/css.css';
+import Event from './components/Event';
 
 
 function indexAdmin(){
@@ -20,7 +21,9 @@ function indexAdmin(){
                     <div className="content">
                         <Slide></Slide>
                     </div>
-                    <p className="text-green-800">asdf</p>
+                    <div className="content">
+                        <Event></Event>
+                    </div>
                 </div>
 
                 {/* <div className="nav">

@@ -15,6 +15,8 @@ import {MdDelete} from 'react-icons/md';
 import { getALlslide, saveslide } from '../../../utils/firebaseFunctions';
 import { useStateValue } from '../../../context/StateProvider';
 import { actionType } from '../../../context/reducer';
+import 'animate.css';
+import ToggleLove from '../components/ToggleLove/ToggleLove';
 
 function Slide (){
     const [name, setName] = useState("");
@@ -157,9 +159,12 @@ function Slide (){
     return(
         <>
         <div id="slide">
-            <h2 className="slide__heading">
-                Slide image
+            <h2 className="slide__heading animate__animated animate__bounce">
+                Slide image 
             </h2>
+            <div className="toggle">
+                <ToggleLove></ToggleLove>
+            </div>
             <div className="table">
                 <table>
                     <tr>
@@ -190,14 +195,13 @@ function Slide (){
                     
                     {slides.map((slides, idx) => {
                         return (
-                            <tr key={slides.id}>
+                            <tr className="table__list" key={slides.id}>
                                 <td className="checkbox  text-align"><CiStop1></CiStop1></td>
                                 <td className="text-align">
                                     <img className='table-image w-full h-full object-contain' src={slides.data.imageURL} alt={slides.data.name}></img>
                                 </td>
                                 <td className="text-align">
                                     <div className="table-active">
-                                        <a href=""><BiEditAlt></BiEditAlt></a>
                                         <button onClick={() => deleteSlide(slides.id)}><BiEraser></BiEraser></button>
                                     </div>
                                 </td>
@@ -246,7 +250,18 @@ function Slide (){
                             )}
                     </div> 
                 </div>
-                <button onClick={saveDetails} type="button" class="btn__submit">Submit</button>
+                {/* <button onClick={saveDetails} type="button" class="btn__submit animate__animated animate__bounce">Submit</button> */}
+                <button  onClick={saveDetails} type="button">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+                        </svg>
+                        </div>
+                    </div>
+                    <span>Send</span>
+                </button>
             </div>
         </div>
         <ToastContainer

@@ -55,3 +55,19 @@ export const getALlslide = async () => {
     );
     return items.docs.map((doc) => doc.data());
 };
+//-----------------------------------------//
+//saving event
+export const saveevent = async(data) => {
+    await setDoc(doc(firestore,"event", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all event
+export const getALlevent = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "event"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+//-----------------------------------------//
