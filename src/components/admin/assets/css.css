@@ -344,6 +344,12 @@ body{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+@media only screen and (max-width: 1000px) {
+    .content {
+        /* overflow: scroll; */
+    }
+}
+
 
 /* slide */
 .checkbox svg{
@@ -396,14 +402,22 @@ body{
     background: none !important;
     cursor: pointer !important;
 }
+.table__td__image{
+    width: 30%;
+}
 .table-image{
     width: 60%;
     height: auto;
     object-fit: cover;
     cursor: pointer;
 }
+.table__image--small{
+    width: 25%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
 .from-add{
-    border-top: 1px solid var(--color--1);
     padding: 10px 0;
 }
 .table{
@@ -578,7 +592,6 @@ button {
 
 button span {
     display: block;
-    margin-left: 0.3em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -614,9 +627,10 @@ transform: translateY(0.1em);
     }
 }
 .toggle{
-    position: absolute;
-    left: 200px;
-    bottom: 30px;
+    position: fixed;
+    z-index: 9;
+    right: 30px;
+    bottom: 60px;
 }
 
 .event__container{
@@ -644,3 +658,8 @@ transform: translateY(0.1em);
     gap: 10px;
     padding: 5px;
 }
+.activeRoute {
+    background-color: yellow;
+    border-bottom: 0.4rem solid teal;
+    cursor: not-allowed;
+  }

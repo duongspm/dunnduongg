@@ -71,3 +71,49 @@ export const getALlevent = async () => {
     return items.docs.map((doc) => doc.data());
 };
 //-----------------------------------------//
+
+//saving album
+export const savealbum = async(data) => {
+    await setDoc(doc(firestore,"album", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all album
+export const getALlalbum = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "album"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+//-----------------------------------------//
+//saving man
+export const saveman = async(data) => {
+    await setDoc(doc(firestore,"man", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all man
+export const getALlman = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "man"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+//-----------------------------------------//
+//saving woman
+export const savewoman = async(data) => {
+    await setDoc(doc(firestore,"woman", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all woman
+export const getALlwoman = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "woman"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+//-----------------------------------------//

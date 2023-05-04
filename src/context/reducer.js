@@ -6,6 +6,10 @@ export const actionType = {
     SET_FEED_BACK : "SET_FEED_BACK",
     SET_SLIDE : "SET_SLIDE",
     SET_EVENT : "SET_EVENT",
+    SET_ALBUM : "SET_ALBUM",
+    SET_MAN : "SET_MAN",
+    SET_WOMAM : "SET_WOMAM",
+
 
 
 };
@@ -50,6 +54,22 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 event: action.event,
+            }; 
+
+        case actionType.SET_ALBUM:
+            return {
+                ...state,
+                album: action.album,
+            }; 
+        case actionType.SET_MAN:
+            return {
+                ...state,
+                man: action.man,
+            }; 
+        case actionType.SET_WOMAN:
+            return {
+                ...state,
+                woman: action.woman,
             }; 
         default:
             return state;

@@ -89,6 +89,9 @@ function Sidebar() {
 
                     <Linkk to='event'
                     activeClass="active"
+                    
+                    activeClassName="activeRoute"
+                    activeStyle={{ color: 'red'}}
                     smooth={true}
                     className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
@@ -98,45 +101,51 @@ function Sidebar() {
                     {!isExpended && <div className="tooltip">Event</div>}
                     </Linkk>
 
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk to='woman' 
+                    smooth={true}
+                    className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiUserMinus/>
                         </div>
                         {isExpended && <p>Women</p>}
                     {!isExpended && <div className="tooltip">Women</div>}
-                    </a>
+                    </Linkk>
 
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk to='man' 
+                    smooth={true}
+                    className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiUserPlus/>
                         </div>
                         {isExpended && <p>Man</p>}
                     {!isExpended && <div className="tooltip">Man</div>}
-                    </a>
+                    </Linkk>
 
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk to='user' className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiUniversalAccess/>
                         </div>
                         {isExpended && <p>Man</p>}
                     {!isExpended && <div className="tooltip">User</div>}
-                    </a>
+                    </Linkk>
 
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk to='feedback' className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiCommentDots/>
                         </div>
                         {isExpended && <p>Feedback</p>}
                     {!isExpended && <div className="tooltip">Feedback</div>}
-                    </a>
+                    </Linkk>
 
-                    <a href="" className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
+                    <Linkk 
+                    smooth={true}
+                    to='album' className={isExpended ?  "menu-item" : "menu-item menu-item-NX"}>
                         <div className="nav__icon">
                             <BiPhotoAlbum/>
                         </div>
                         {isExpended && <p>Album</p>}
                     {!isExpended && <div className="tooltip">Album</div>}
-                    </a>
+                    </Linkk>
                     
                 </div>
 

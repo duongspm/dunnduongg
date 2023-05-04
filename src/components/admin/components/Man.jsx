@@ -11,27 +11,27 @@ import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebas
 import { CiStop1 } from "react-icons/ci";
 
 import {MdDelete} from 'react-icons/md';
-import { getALlevent, saveevent } from '../../../utils/firebaseFunctions';
+import { getALlman, saveman } from '../../../utils/firebaseFunctions';
 import { useStateValue } from '../../../context/StateProvider';
 import { actionType } from '../../../context/reducer';
 
-function Event (){
+function Man(){
     const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [day, setDay] = useState("");
-    const [hour, setHour] = useState("");
-    const [ggmap, setGgmap] = useState("");
+    const [desc, setDesc] = useState("");
+    const [linkfb, setLinkfb] = useState("");
+    const [linkins, setLinkins] = useState("");
+    const [sdt, setSdt] = useState("");
 
-    const [event, setEvent] = useState(null);
+    const [man, setMan] = useState(null);
     const [imageAsset, setImageAsset] = useState(null);
 
     const [isLoading, setIsLoading] = useState(false);
-    const [{Event}, dispatch] = useStateValue();
+    const [{Man}, dispatch] = useStateValue();
     const uploadImage = (e) => {
         setIsLoading(true);
 
         const imageFile = e.target.files[0];
-        const storageRef = ref(storage, `Event/${Date.now()}-${imageFile.name}`);
+        const storageRef = ref(storage, `Man/${Date.now()}-${imageFile.name}`);
         const uploadTask = uploadBytesResumable(storageRef, imageFile);
     
         uploadTask.on(
@@ -91,12 +91,12 @@ function Event (){
                     id : `${Date.now()}`,
                     imageURL : imageAsset,
                     name: name,
-                    address: address,
-                    day:day,
-                    hour:hour,
-                    ggmap:ggmap,
+                    desc: desc,
+                    linkfb: linkfb,
+                    linkins: linkins,
+                    sdt: sdt,
                 }
-                saveevent(data);
+                saveman(data);
                 setIsLoading(false);
 
                 toast.success("Data upload successfully 😊😊🤑");
@@ -105,7 +105,7 @@ function Event (){
                     setIsLoading(false)
                 }, 1000);
                 clearData();
-                getevents();
+                getmans();
             }
         } catch (error){
             console.log(error);
@@ -118,54 +118,58 @@ function Event (){
     };
     const clearData = () => {
         setName("");
-        setEvent("");
+        setLinkfb("");
+        setLinkins("");
+        setSdt("");
+        setDesc("");
         setImageAsset(null);
     }
     const fetchData = async() => {
-        await getALlevent().then ((data) => {
+        await getALlman().then ((data) => {
             dispatch({
-                type : actionType.SET_EVENT,
-                event : data,
+                type : actionType.SET_MAN,
+                man : data,
             });
         });
     };
 
-    // slide
-    const [events, setEvents] = useState([]);
+    // man
+    const [mans, setMans] = useState([]);
     useEffect(() => {
         try{
-            getevents()
+            getmans()
         }catch(err){
             console.log("loiii"+err);
         }
 
     },[])
     useEffect (() =>{
-        console.log(events)
+        console.log(mans)
     })
-    const getevents = () => {
-        const eventCollectionRef = collection(firestore, "event")
-        getDocs(eventCollectionRef)
+    const getmans = () => {
+        const manCollectionRef = collection(firestore, "man")
+        getDocs(manCollectionRef)
             .then(response => {
                 console.log(response)
-                const events = response.docs.map(doc => ({
+                const mans = response.docs.map(doc => ({
                     data: doc.data(),
                     id: doc.id
                 }))
-                setEvents(events);
+                setMans(mans);
             })
             .catch(error => console.log(error.message))
     }
-    function deleteEvent(id) {
-        const docRef = doc(firestore, 'event', id)
+    function deleteMan(id) {
+        const docRef = doc(firestore, 'man', id)
         deleteDoc(docRef).then(() => console.log('Document delete roi'))
             .catch(error => console.log(error.message))
         //alert(id)
-        getevents();
+        getmans();
     }
-    return (
-        <div id="event">
-            <h2>Event - Sự kiện cưới</h2>
+    return(
+        <div id='man'>
+            <h2>Bê tráp man</h2>
+            <h3>Danh sách</h3>
             <div className="event__container">
                 <div className="event__top">
                     <table className="table__event">
@@ -177,28 +181,28 @@ function Event (){
                             <th>
                                 Name
                             </th>
-                            <th>Address</th>
-                            <th>Day</th>
-                            <th>Hour</th>
-                            <th>GGmap</th>
+                            <th>Desc</th>
+                            <th>Link Facebook</th>
+                            <th>Link Instargam</th>
+                            <th>SDT</th>
                             <th>Active</th>
                         </tr>
-                        {events.map((events, idx) => {
+                        {mans.map((mans, idx) => {
                         return (
-                            <tr className="table__list" key={events.id}>
+                            <tr className="table__list" key={mans.id}>
                                 <td className="checkbox  text-align"><CiStop1></CiStop1></td>
-                                <td className="text-align">
-                                    <img className='table__image--small w-full h-full object-contain' src={events.data.imageURL} alt={events.data.name}></img>
+                                <td className="text-align table__td__image">
+                                    <img className='table__image--small w-full h-full object-contain' src={mans.data.imageURL} alt={mans.data.name}></img>
                                 </td>
-                                <td className="text-align">{events.data.name}</td>
-                                <td className="text-align">{events.data.address}</td>
-                                <td className="text-align">{events.data.day}</td>
-                                <td className="text-align">{events.data.hour}</td>
-                                <td className="text-align">{events.data.ggmap}</td>
+                                <td className="text-align">{mans.data.name}</td>
+                                <td className="text-align">{mans.data.desc}</td>
+                                <td className="text-align">{mans.data.linkfb}</td>
+                                <td className="text-align">{mans.data.linkins}</td>
+                                <td className="text-align">{mans.data.sdt}</td>
 
                                 <td className="text-align">
                                     <div className="table-active">
-                                        <button onClick={() => deleteEvent(events.id)}><BiEraser></BiEraser></button>
+                                        <button onClick={() => deleteMan(mans.id)}><BiEraser></BiEraser></button>
                                     </div>
                                 </td>
                             </tr>)
@@ -209,7 +213,6 @@ function Event (){
                 <div className="event__bottom">
                     <div className="event__left">
                         <div className="event__add__img">
-                            <span>Image</span>
                             <div className="event--image">
                                 <div className="from-add">
                                     <div className='image__container'>{/*div nay dung de gioi han hinh anh */}
@@ -272,20 +275,20 @@ function Event (){
                             <input value={name} onChange={(e) => setName(e.target.value)}  class="input" name="text" placeholder="Name..." type="search"/>
                         </div>
                         <div className="event__add__text">
-                            <span>Address</span>
-                            <input value={address} onChange={(e) => setAddress(e.target.value)}  class="input" name="text" placeholder="Address..." type="search"/>
+                            <span>Desc</span>
+                            <input value={desc} onChange={(e) => setDesc(e.target.value)}  class="input" name="text" placeholder="Desc..." type="search"/>
                         </div>
                         <div className="event__add__text">
-                            <span>Day</span>
-                            <input value={day} onChange={(e) => setDay(e.target.value)}  class="input" name="text" placeholder="Day..." type="search"/>
+                            <span>Link Facebook</span>
+                            <input value={linkfb} onChange={(e) => setLinkfb(e.target.value)}  class="input" name="text" placeholder="Linkfb..." type="search"/>
                         </div>
                         <div className="event__add__text">
-                            <span>Hour</span>
-                            <input value={hour} onChange={(e) => setHour(e.target.value)}  class="input" name="text" placeholder="Hour..." type="search"/>
+                            <span>Link Instagram</span>
+                            <input value={linkins} onChange={(e) => setLinkins(e.target.value)}  class="input" name="text" placeholder="Link ins..." type="search"/>
                         </div>
                         <div className="event__add__text">
-                            <span>Link GGmap</span>
-                            <input value={ggmap} onChange={(e) => setGgmap(e.target.value)}  class="input" name="text" placeholder="Link GGmap..." type="search"/>
+                            <span>SDT</span>
+                            <input value={sdt} onChange={(e) => setSdt(e.target.value)}  class="input" name="text" placeholder="SDT..." type="number"/>
                         </div>
                     </div>
                 </div>
@@ -293,4 +296,4 @@ function Event (){
         </div>
     )
 }
-export default Event
+export default Man
