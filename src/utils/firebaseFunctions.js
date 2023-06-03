@@ -117,3 +117,20 @@ export const getALlwoman = async () => {
     return items.docs.map((doc) => doc.data());
 };
 //-----------------------------------------//
+
+//-----------------------------------------//
+//saving blog
+export const saveblog = async(data) => {
+    await setDoc(doc(firestore,"blog", `${Date.now()}`), data,{
+        merge: true,
+    });
+};
+
+//get all blog
+export const getALlblog = async () => {
+    const items = await getDocs (
+        query(collection(firestore, "blog"), orderBy("id","desc"))
+    );
+    return items.docs.map((doc) => doc.data());
+};
+//-----------------------------------------//

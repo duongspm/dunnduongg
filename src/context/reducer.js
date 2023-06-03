@@ -10,6 +10,7 @@ export const actionType = {
     SET_MAN : "SET_MAN",
     SET_WOMAM : "SET_WOMAM",
 
+    SET_BLOG : "SET_BLOG",
 
 
 };
@@ -70,6 +71,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 woman: action.woman,
+            }; 
+        case actionType.SET_BLOG:
+            return {
+                ...state,
+                blog: action.blog,
             }; 
         default:
             return state;

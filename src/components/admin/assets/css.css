@@ -553,7 +553,7 @@ body{
 
 /* event */
 .input {
-    max-width: 290px;
+    /* max-width: 290px; */
     background-color: #f5f5f5;
     color: #242424;
     padding: .15rem .5rem;
